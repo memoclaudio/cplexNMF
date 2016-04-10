@@ -150,7 +150,7 @@ public class ALS_NMF {
 				regSum += (H[j][idx1]-H[j][idx2])*(H[j][idx1]-H[j][idx2]);
 			}
 		}
-		regSum = lambda*regSum;
+		regSum = (lambda/2)*regSum;
 		objective = cplex.sum(objective,regSum);
 		
 		//Objective function definition

@@ -18,8 +18,10 @@ public class Main_NMF {
 //		int REPETITIONS = Integer.parseInt(args[1]);
 		
 		ArrayList<ArrayList<double[][]>> allSolutions = new ArrayList<ArrayList<double[][]>>();
-		ArrayList<ArrayList<Integer>> neigh = FileReaderWriter.read("/Users/stamile/Desktop/NMF/trash/indexSet");
-		ArrayList<ArrayList<Double>> v1 = FileReaderWriter.valuesReader("/Users/stamile/Desktop/NMF/trash/X1");
+		String neigList = "";
+		String vMatrix = "";
+		ArrayList<ArrayList<Integer>> neigh = FileReaderWriter.read(neigList);
+		ArrayList<ArrayList<Double>> v1 = FileReaderWriter.valuesReader(vMatrix);
 		
 		int n = v1.size();
 		int m = v1.get(0).size();
