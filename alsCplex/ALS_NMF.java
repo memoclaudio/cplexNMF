@@ -142,17 +142,18 @@ public class ALS_NMF {
 			objective = cplex.sum(objective,exp[i]);
 
 		//Spatial regularization
-		double regSum = 0;
-		for(int i=0; i<neigh.size(); i++){
-			for(int j=0; j<k; j++){
-				int idx1 = neigh.get(i).get(0)-1;
-				int idx2 = neigh.get(i).get(1)-1;
-				regSum += (H[j][idx1]-H[j][idx2])*(H[j][idx1]-H[j][idx2]);
+		if(lambda > 0){
+			double regSum = 0;
+			for(int i=0; i<neigh.size(); i++){
+				for(int j=0; j<k; j++){
+					int idx1 = neigh.get(i).get(0)-1;
+					int idx2 = neigh.get(i).get(1)-1;
+					regSum += (H[j][idx1]-H[j][idx2])*(H[j][idx1]-H[j][idx2]);
+				}
 			}
+			regSum = (lambda/2)*regSum;
+			objective = cplex.sum(objective,regSum);
 		}
-		regSum = (lambda/2)*regSum;
-		objective = cplex.sum(objective,regSum);
-		
 		//Objective function definition
 		//System.out.println(objective);
 		cplex.addMinimize(objective);
