@@ -133,7 +133,7 @@ public class ALS_NMF {
 		int count = 0;
 		for(int i=0; i<n; i++){
 			for(int j=0; j<m; j++){
-				exp[count] = cplex.square(cplex.diff(V[i][j],WH[i][j]));
+				exp[count] = cplex.square(cplex.abs(cplex.diff(V[i][j],WH[i][j])));
 				count++;
 			}
 		}
@@ -192,7 +192,7 @@ public class ALS_NMF {
 		int count = 0;
 		for(int i=0; i<n; i++){
 			for(int j=0; j<m; j++){
-				exp[count] = cplex.square(cplex.diff(V[i][j],WH[i][j]));
+				exp[count] = cplex.square(cplex.abs(cplex.diff(V[i][j],WH[i][j])));
 				count++;
 			}
 		}
